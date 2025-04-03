@@ -29,6 +29,9 @@ function highlightCurrentLesson() {
     const currentMinute = now.getMinutes();
     const currentTime = currentHour * 60 + currentMinute; // Convert time to minutes
 
+    // Log the current time for debugging
+    console.log(`Current Time: ${currentTime} minutes`);
+
     const lessons = [
         { start: { hour: 8, minute: 40 }, end: { hour: 9, minute: 30 }, id: "lesson1" },
         { start: { hour: 9, minute: 30 }, end: { hour: 10, minute: 10 }, id: "lesson2" },
@@ -36,18 +39,23 @@ function highlightCurrentLesson() {
         { start: { hour: 10, minute: 50 }, end: { hour: 11, minute: 10 }, id: "recess" },
         { start: { hour: 11, minute: 10 }, end: { hour: 12, minute: 0 }, id: "lesson4" },
         { start: { hour: 12, minute: 0 }, end: { hour: 12, minute: 50 }, id: "lesson5" },
-        { start: { hour: 12, minute: 50 }, end: { hour: 1, minute: 35 }, id: "lunch" },
-        { start: { hour: 1, minute: 35 }, end: { hour: 2, minute: 25 }, id: "lesson6" },
-        { start: { hour: 2, minute: 25 }, end: { hour: 3, minute: 15 }, id: "lesson7" },
+        { start: { hour: 12, minute: 50 }, end: { hour: 13, minute: 35 }, id: "lunch" },
+        { start: { hour: 13, minute: 35 }, end: { hour: 14, minute: 25 }, id: "lesson6" },
+        { start: { hour: 14, minute: 25 }, end: { hour: 15, minute: 15 }, id: "lesson7" },
     ];
 
     lessons.forEach(lesson => {
         const lessonStart = lesson.start.hour * 60 + lesson.start.minute;
         const lessonEnd = lesson.end.hour * 60 + lesson.end.minute;
 
+        // Log the lesson times for debugging
+        console.log(`Lesson ${lesson.id}: Start ${lessonStart} minutes, End ${lessonEnd} minutes`);
+
         if (currentTime >= lessonStart && currentTime < lessonEnd) {
             const lessonElement = document.getElementById(lesson.id);
-            lessonElement.classList.add("highlight");
+            if (lessonElement) {
+                lessonElement.classList.add("highlight");
+            }
         }
     });
 }
