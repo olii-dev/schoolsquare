@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     form.addEventListener("submit", (e) => {
         e.preventDefault();
-        const day = document.getElementById("day").value;
+        const day = document.getElementById("day").value; // Get selected day
         const lessons = {
             lesson1: document.getElementById("lesson1").value,
             lesson2: document.getElementById("lesson2").value,
@@ -17,12 +17,14 @@ document.addEventListener("DOMContentLoaded", () => {
             lesson6: document.getElementById("lesson6").value,
             lesson7: document.getElementById("lesson7").value,
         };
-
-        // Save timetable to local storage
+    
+        // Save timetable to localStorage for the selected day
         localStorage.setItem(day, JSON.stringify(lessons));
+    
+        // Alert and reload timetable display
         alert("Timetable saved!");
         loadTimetable();
-    });
+    });    
 
     function loadTimetable() {
         const today = new Date();

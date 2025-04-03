@@ -1,18 +1,20 @@
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
+    color: #333;
 }
 
 header {
     background-color: #003366;
     color: white;
-    padding: 10px 20px; /* Reduced padding for a smaller nav bar */
+    padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 80px; /* Adjusted height of the nav bar */
+    height: 80px;
 }
 
 .logo img {
@@ -25,7 +27,7 @@ nav ul {
     list-style-type: none;
     display: flex;
     flex-wrap: wrap;
-    gap: 25px; /* Increased gap for better spacing between icons */
+    gap: 25px;
     padding: 0;
 }
 
@@ -45,7 +47,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #ffcc00; /* Change hover color */
+    color: #ffcc00;
 }
 
 .user-info {
@@ -66,7 +68,7 @@ nav ul li a:hover {
 
 .settings-link:hover {
     transform: translateY(-5px);
-    color: #ffcc00; /* Change hover color */
+    color: #ffcc00;
 }
 
 main {
@@ -82,101 +84,129 @@ main {
 }
 
 .timetable {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px; /* Space between lessons */
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
 }
 
 .lesson {
-    background-color: #f9f9f9;
+    flex: 1;
     border: 1px solid #ddd;
     border-radius: 5px;
-    padding: 10px;
+    padding: 15px;
     text-align: center;
     transition: background-color 0.3s;
-}
-
-.lesson h4 {
-    margin: 0;
-}
-
-.lesson p {
-    margin: 5px 0;
+    max-width: 120px;
+    position: relative;
 }
 
 .lesson.highlight {
-    background-color: #cceeff; /* Highlight color for current lesson */
-    font-weight: bold; /* Make text bold */
+    border: 2px solid #003366;
+    font-weight: bold;
 }
+
 .lesson:hover {
-    background-color: #e7e7e7; /* Change background color on hover */
+    opacity: 0.8;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+/* Modal Styles */
+.modal {
+    display: block; /* Always show for testing */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+    animation: fadeIn 0.5s;
 }
 
-header {
-    background-color: #003366;
-    color: white;
-    padding: 15px;
-    text-align: center;
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center content horizontally */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
     padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
-h2 {
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    cursor: pointer;
+}
+
+.step {
+    display: none;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+}
+
+.step.active {
+    display: block;
+    opacity: 1;
+}
+
+.modal-footer {
+    text-align: center;
     margin-top: 20px;
 }
 
-.form-group {
-    margin-bottom: 15px;
-}
-
-label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 5px;
-}
-
-input, select {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    width: 100%; /* Full width for inputs */
-    max-width: 400px; /* Limit max width */
-}
-
-button {
-    padding: 10px;
-    background-color: #003366;
-    color: white;
+.modal-footer button {
+    padding: 10px 20px;
+    margin: 5px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
-button:hover {
-    background-color: #004080;
+#prevButton {
+    color: white;
 }
 
-.timetable-display {
-    margin-top: 20px;
-    background-color: #ffffff;
-    padding: 15px;
+#nextButton {
+    background-color: #003366;
+    color: white;
+}
+
+#prevButton:hover, #nextButton:hover {
+    transform: scale(1.05);
+}
+
+#stepCounter {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+/* Image Styling */
+.step img {
+    max-width: 100%;
+    height: auto;
     border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-.timetable-display p {
-    margin: 0;
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>Settings - Schoolsquare</title>
+    <link rel="icon" href="images/schoolbox-logo.png" type="image/x-icon">
 </head>
 <body>
     <header>
@@ -76,7 +77,53 @@
                 <p>No timetable set for today.</p>
             </div>
         </section>
+
+        <section>
+            <button id="showTutorialButton" class="btn">Show Tutorial</button>
+        </section>
     </main>
+
+    <!-- Tutorial Modal -->
+    <div id="tutorialModal" class="modal" style="text-align: center; display: none;">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div id="tutorialSteps">
+                <div class="step active">
+                    <h2>Welcome to Schoolbox!</h2>
+                    <p>This tutorial will guide you through setting up your timetable.</p>
+                </div>
+                <div class="step">
+                    <h2>Step 1: Navigate to Settings</h2>
+                    <p>Go to the <strong>Settings</strong> page to customize your timetable.</p>
+                    <img src="images/settings-screenshot.png" alt="Settings Page" width="600">
+                </div>
+                <div class="step">
+                    <h2>Step 2: Set Your Timetable</h2>
+                    <p>Select the day and enter your lessons for each time slot.</p>
+                    <img src="images/set-timetable.png" alt="Timetable Settings"  width="600">
+                </div>
+                <div class="step">
+                    <h2>Step 3: View Your Schedule</h2>
+                    <p>The current lesson will be highlighted based on the current time.</p>
+                    <img src="images/schedule-screenshot.png" alt="View Schedule" width="600">
+                </div>
+                <div class="step">
+                    <h2>Step 4: Turn Off Tutorial</h2>
+                    <p>You can turn off this tutorial to prevent it from showing again.</p>
+                    <label>
+                        <input type="checkbox" id="disableTutorial"> Do not show this tutorial again
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="prevButton" onclick="changeStep(-1)">Previous</button>
+                <button id="nextButton" onclick="changeStep(1)">Next</button>
+                <span id="stepCounter">Page 1 of 4</span>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
