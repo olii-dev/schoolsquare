@@ -35,7 +35,13 @@
     </header>
     <main>
         <section class="schedule">
-            <h3>Today's Schedule:</h3>
+            <h2 id="schedule-title">Loading Date...</h3>
+            <script>
+            const scheduleTitle = document.getElementById('schedule-title');
+            const today = new Date();
+            const options = { weekday: 'long' };
+            scheduleTitle.textContent = `${today.toLocaleDateString(undefined, options)}'s Schedule:`;
+            </script>
             <div class="timetable">
                 <div class="lesson" id="lesson1">
                     <h4>Lesson 1</h4>
@@ -81,6 +87,12 @@
                     <p>Loading...</p>
                 </div>
             </div>
+        </section>
+        <section class="weather-widget" style="text-align: center;">
+            <h3>Current Weather:</h3>
+            <div id="weather" style="display: inline-block;"></div>
+            <iframe src="https://cdnres.willyweather.com.au/widget/loadView.html?id=76673" width="210" height="228" frameborder="0" scrolling="no"></iframe>
+            <a style="z-index: 1; height: 20px; margin: -20px 0 0 0; display: block; text-indent: -9999em; position: relative; pointer-events: none;" href="https://www.willyweather.com.au/sa/barossa/evanston-south.html" rel="nofollow">weather for Evanston South</a>
         </section>
     </main>
     <script src="main.js"></script>
